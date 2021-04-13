@@ -3,6 +3,7 @@
       <label for="emailInput" class="form-label">Email address</label>
       <input type="email" class="form-control" id="emailInput" [(ngModel)]="newUser.email" [ngModelOptions]="{standalone: true}" #email="ngModel" required email >
       <p *ngIf="submited && email.errors?.required" >Email is required</p>
+      <p *ngIf="submited && email.errors?.email" >Email is invalid</p>
     </div>
     <div class="mb-3">
         <label for="firstnameInput" class="form-label">First name</label>
