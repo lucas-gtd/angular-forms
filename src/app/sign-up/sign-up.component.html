@@ -1,0 +1,19 @@
+<form (ngSubmit)="onSubmit()" >
+    <div class="mb-3">
+      <label for="emailInput" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="emailInput" [(ngModel)]="newUser.email" [ngModelOptions]="{standalone: true}" >
+    </div>
+    <div class="mb-3">
+        <label for="firstnameInput" class="form-label">First name</label>
+        <input type="text" class="form-control" id="firstnameInput" [(ngModel)]="newUser.firstname" [ngModelOptions]="{standalone: true}" >
+    </div>
+    <div class="mb-3">
+        <label for="lastnameInput" class="form-label">Last name</label>
+        <input type="text" class="form-control" id="lastnameInput" [(ngModel)]="newUser.lastname" [ngModelOptions]="{standalone: true}" >
+    </div>
+    <div class="mb-3">
+      <label for="passInput" class="form-label">Password</label>
+      <input type="password" class="form-control" id="passInput" [(ngModel)]="newUser.password" [ngModelOptions]="{standalone: true}" >
+    </div>
+    <button type="submit" class="btn btn-primary">S'inscrire</button>
+</form>
