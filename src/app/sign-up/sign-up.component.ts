@@ -8,10 +8,12 @@ import { User } from '../common/user.model';
 })
 export class SignUpComponent implements OnInit {
 
+  submited: boolean = false;
   newUser: User;
 
   onSubmit(){
     console.log(this.newUser)
+    this.submited = !this.submited
   }
 
   constructor() { }

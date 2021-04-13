@@ -1,19 +1,30 @@
-<form (ngSubmit)="onSubmit()" >
+<form (ngSubmit)="myForm.valid && onSubmit()" #myForm="ngForm" >
     <div class="mb-3">
       <label for="emailInput" class="form-label">Email address</label>
-      <input type="email" class="form-control" id="emailInput" [(ngModel)]="newUser.email" [ngModelOptions]="{standalone: true}" >
+      <input type="email" class="form-control" id="emailInput" [(ngModel)]="newUser.email" [ngModelOptions]="{standalone: true}" #email="ngModel" required email >
+      <p *ngIf="submited && email.errors?.required" >Email is required</p>
     </div>
     <div class="mb-3">
         <label for="firstnameInput" class="form-label">First name</label>
-        <input type="text" class="form-control" id="firstnameInput" [(ngModel)]="newUser.firstname" [ngModelOptions]="{standalone: true}" >
+        <input type="text" class="form-control" id="firstnameInput" [(ngModel)]="newUser.firstname" [ngModelOptions]="{standalone: true}" required minlength="3" maxlength="15" #firstname="ngModel" >
+        <div *ngIf="submited && firstname.errors" >
+            <p *ngIf="firstname.errors?.required" >First name is required</p>
+            <p *ngIf="firstname.errors?.minlength" >First name needs more than 3 char.</p>
+            <p *ngIf="firstname.errors?.minlength" >First name needs less than 15 char.</p>
+        </div>
     </div>
     <div class="mb-3">
         <label for="lastnameInput" class="form-label">Last name</label>
-        <input type="text" class="form-control" id="lastnameInput" [(ngModel)]="newUser.lastname" [ngModelOptions]="{standalone: true}" >
+        <input type="text" class="form-control" id="lastnameInput" [(ngModel)]="newUser.lastname" [ngModelOptions]="{standalone: true}" required minlength="3" maxlength="15" #lastname="ngModel" >
+        <div *ngIf="submited && lastname.errors" >
+            <p *ngIf="lastname.errors?.required" >Last name is required</p>
+            <p *ngIf="lastname.errors?.minlength" >Last name needs more than 3 char.</p>
+            <p *ngIf="lastname.errors?.minlength" >Last name needs less than 15 char.</p>
+        </div>
     </div>
     <div class="mb-3">
       <label for="passInput" class="form-label">Password</label>
-      <input type="password" class="form-control" id="passInput" [(ngModel)]="newUser.password" [ngModelOptions]="{standalone: true}" >
+      <input type="password" class="form-control" id="passInput" [(ngModel)]="newUser.password" [ngModelOptions]="{standalone: true}" #password="ngModel" >
     </div>
     <button type="submit" class="btn btn-primary">S'inscrire</button>
 </form>
